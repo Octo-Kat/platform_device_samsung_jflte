@@ -17,8 +17,11 @@
 # Get non-open-source specific aspects if available
 $(call inherit-product-if-exists, vendor/samsung/jflte/jflte-vendor.mk)
 
+# remove jf-common overlay for storage list
+$(call add-clean-step, rm -rf device/samsung/jf-common/overlay/frameworks/base/core/res/res/xml/storage_list.xml)
+
 # Overlay
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/jflte/overlay
 
 # Inherit from jf-common
 $(call inherit-product, device/samsung/jf-common/jf-common.mk)
